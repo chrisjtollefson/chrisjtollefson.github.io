@@ -92,30 +92,22 @@
     <div class="container fill">
 
 		<div id="map"></div>
-				
-				<script>
-				// Initialize the map.
-				var map = L.map('map').setView([39.75, -105], 10);
-				// Load a tile layer.
-				L.tileLayer('http://b.tile.stamen.com/toner/{z}/{x}/{y}.png', {
-				  attribution: 'Tiles by <a href="http://stamen.com">Stamen</a>',
-				  maxZoom: 17,
-				  minZoom: 9
-				}).addTo(map);
-				var districtLayer = L.tileLayer.wms("http://gis.drcog.org/geoserver/gwc/service/wms?",{
-				  layers: 'DRCOGPUB:traffic_counts_2014',
-				  tiled: true,
-				  format: 'image/png',
-				  transparent: true
-				  }).addTo(map);
-				</script>
-	
-        <div class="row">
-            <div class="col-lg-12 text-center">	
-				
-            </div>
-        </div>
-        <!-- /.row -->
+		
+		<script>
+		// Initialize the map.
+		var map = L.map('map').setView([39.75, -105], 6);
+		
+		// Load a tile layer.
+		L.tileLayer('http://b.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+			attribution: 'Tiles by <a href="http://stamen.com">Stamen</a>',
+			maxZoom: 17,
+			minZoom: 9
+		}).addTo(map);
+		
+		// Load jason file of school districts
+		
+		
+		</script>
 
     </div>
     <!-- /.container -->
