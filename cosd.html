@@ -3,20 +3,23 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <title>Colorado School Districts</title>
+	<title>Colorado School Districts</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 	
 	<!-- For Leaflet to load maps -->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	
+	<!-- Bring in the leaflet KML plugin -->
+	<script src="leaflet-plugins/layer/vector/KML.js"></script>
 
     <!-- Custom CSS -->
     <style>
@@ -104,8 +107,12 @@
 			minZoom: 9
 		}).addTo(map);
 		
-		// Load jason file of school districts
-		
+		// Load KML file of school districts
+		var kmlLayer = new L.KML("co_school_district.kml", {async: true});
+         	kmlLayer.on("loaded", function(e) { 
+            		map.fitBounds(e.target.getBounds());
+         	});
+         	map.addLayer(kmlLayer);
 		
 		</script>
 
